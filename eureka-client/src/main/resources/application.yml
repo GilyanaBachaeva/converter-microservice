@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: eclient
+  cloud:
+    discovery:
+      client:
+        service-url:
+          defaultZone: http://localhost:8081/eureka
+
+minio:
+  endpoint: http://minio:9000
+  root_user: ${MINIO_ROOT_USER:my-key}
+  root_password: ${MINIO_ROOT_PASSWORD:my-password-key}
+  bucket: ${MINIO_BUCKET:my-bucket}
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+  pattern:
+    console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
+
+server:
+  port: 8082

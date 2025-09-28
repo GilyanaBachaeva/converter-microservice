@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ROOT_USER: my-key
+      MINIO_ROOT_PASSWORD: my-password-key
+    command: server /data
+    volumes:
+      - minio-data:/data
+
+  eclient:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - minio
+    environment:
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESS_KEY: my-key
+      MINIO_SECRET_KEY: my-password-key
+      SPRING_APPLICATION_NAME: eclient
+volumes:
+  minio-data:

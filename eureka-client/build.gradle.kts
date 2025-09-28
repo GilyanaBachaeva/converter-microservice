@@ -22,9 +22,15 @@ extra["springCloudVersion"] = "2021.0.0"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("com.itextpdf:itext7-core:7.1.15")
+	implementation("io.minio:minio:8.3.0")
+	compileOnly("org.projectlombok:lombok:1.18.28")
+	annotationProcessor("org.projectlombok:lombok:1.18.28")
+	implementation("com.squareup.okhttp3:okhttp:4.9.3")
 }
 
 dependencyManagement {
