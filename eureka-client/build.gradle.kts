@@ -21,7 +21,8 @@ repositories {
 extra["springCloudVersion"] = "2021.0.0"
 
 dependencies {
-	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
@@ -32,13 +33,17 @@ dependencyManagement {
 	}
 }
 
+tasks.withType<Test> {
+	useJUnitPlatform()
+}
+
 tasks.bootJar {
-	mainClass.set("spring_micro.eureka_server.EurekaServerApplication")
+	mainClass.set("spring_micro.eureka_client.EurekaClientApplication")
 }
 
 tasks.register<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
 	group = "application"
 	description = "Runs the application."
 	classpath = sourceSets["main"].runtimeClasspath
-	mainClass.set("spring_micro.eureka_server.EurekaServerApplication")
+	mainClass.set("spring_micro.eureka_client.EurekaClientApplication")
 }
