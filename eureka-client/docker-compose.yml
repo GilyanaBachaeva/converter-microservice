@@ -25,5 +25,6 @@ services:
       MINIO_ACCESS_KEY: my-key
       MINIO_SECRET_KEY: my-password-key
       SPRING_APPLICATION_NAME: eclient
+      EUREKA_CLIENT_SERVICE_URL: http://eserver:8081/eureka/
 volumes:
   minio-data:

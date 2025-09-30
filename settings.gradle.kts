@@ -1,2 +1,2 @@
 rootProject.name = "converter-microservice"
-include("eureka-server", "eureka-client")
+include("eureka-server", "eureka-client", "api-gateway")

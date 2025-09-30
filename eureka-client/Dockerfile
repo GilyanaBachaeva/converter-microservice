@@ -14,5 +14,5 @@ RUN ./gradlew test --no-daemon
 # Этап 2: Запуск приложения
 FROM eclipse-temurin:17-jre
 WORKDIR /app
-COPY --from=builder /app/build/libs/eureka-client-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /eureka-client/build/libs/eureka-client-0.0.1-SNAPSHOT-plain.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
